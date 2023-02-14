@@ -1,0 +1,42 @@
+---
+  props: {
+   settings: {
+    email: 'pochta@yandex.ru',
+    login: 'ivanivanov',
+    name: 'Иван',
+    surname: 'Иванов',
+    nickname: 'Иван',
+    phone: '+7 (909) 967 30 30'
+   }
+  }
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="../../../index.pcss" />
+    <link rel="stylesheet" href="./profileSettings.pcss" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <main class="page-wrapper profile">
+    {{#extend "settingsContainer/settingsContainer"}}
+      {{#content "settings"}}
+        {{> avatar/avatar src="../../../static/icons/file.svg"}}
+          <div class="profile-settings_inputs">     
+            {{>settingsInput/settingsInput id="email" type="email" label="Почта" value=props.settings.email }}
+            {{>settingsInput/settingsInput id="login" type="login" label="Логин" value=props.settings.login }}
+            {{>settingsInput/settingsInput id="name" type="name" label="Имя" value=props.settings.name }}
+            {{>settingsInput/settingsInput id="surname" type="surname" label="Фамилия" value=props.settings.surname }}
+            {{>settingsInput/settingsInput id="telephone" type="telephone" label="Иван" value=props.settings.nickname }}
+            {{>settingsInput/settingsInput id="tel" type="tel" label="Телефон" value=props.settings.phone }}
+         </div>
+        {{> buttonBase/buttonBase label='Сохранить'}}
+      {{/content}}
+    {{/extend}}
+    </main>
+  </body>
+</html>

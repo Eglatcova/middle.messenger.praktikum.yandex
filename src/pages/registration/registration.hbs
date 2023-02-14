@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="../../../index.pcss" />
+    <link rel="stylesheet" href="./registration.pcss" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="page-wrapper registration">
+      <div class="registration_container">   
+        <div>
+          {{> title/title label='Регистрация' }}
+          <form class="registration_form">
+            {{> input/input id='email' label='Почта' type='email' placeholderLabel='Введите почту' }}
+            {{> input/input id='login' label='Логин' type='text' placeholderLabel='Введите логин' }}
+            {{> input/input id='name' label='Имя' type='text' placeholderLabel='Введите имя' }}
+            {{> input/input id='surname' label='Фамилия' type='text' placeholderLabel='Введите фамилию' }}
+            {{> input/input id='tel' label='Телефон' type='tel' placeholderLabel='Введите телефон' }}
+            {{> input/input id='password_first' label='Пароль' type='password' placeholderLabel='Введите пароль' }}
+            {{> input/input id='password_second' label='Пароль (ещё раз)' type='password' placeholderLabel='Введите пароль повторно' }}
+          </form>
+        </div>
+        <div class="registration_buttons"> 
+          {{> buttonBase/buttonBase label='Зарегистрироваться'}}
+          <div class="registration_link-wrapper">
+            {{> link/link label="Войти" href="../login/login.hbs"}}
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
