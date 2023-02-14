@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "parcel index.hbs --no-cache --port 3000",
-    "build": "parcel build index.hbs && node ./server.js --no-cache --port 3000"
+    "build": "parcel build index.hbs && node ./server.js --no-cache",
+    "build-netlify": "parcel build index.hbs --no-cache"
   },
   "repository": {
     "type": "git",
