@@ -5,3 +5,5 @@ npm run start - запуск
 npm run build - сборка и раздача статики
 
 npm run build-netlify - сборка для netlify
+
+домен Netlify - https://lively-cobbler-c00190.netlify.app/
