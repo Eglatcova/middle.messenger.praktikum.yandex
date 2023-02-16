@@ -11,23 +11,21 @@
   <body>
     <main class="page-wrapper registration">
       <div class="registration_container">   
-        <div>
-          {{> title/title label='Регистрация' }}
+        <div class="registration_top-wrapper">
+          {{> title/title label="Регистрация" }}
           <form class="registration_form">
-            {{> input/input id='email' label='Почта' type='email' placeholderLabel='Введите почту' }}
-            {{> input/input id='login' label='Логин' type='text' placeholderLabel='Введите логин' }}
-            {{> input/input id='name' label='Имя' type='text' placeholderLabel='Введите имя' }}
-            {{> input/input id='surname' label='Фамилия' type='text' placeholderLabel='Введите фамилию' }}
-            {{> input/input id='tel' label='Телефон' type='tel' placeholderLabel='Введите телефон' }}
-            {{> input/input id='password_first' label='Пароль' type='password' placeholderLabel='Введите пароль' }}
-            {{> input/input id='password_second' label='Пароль (ещё раз)' type='password' placeholderLabel='Введите пароль повторно' }}
+            {{> input/input id="email" label="Почта" type="email" name="email" placeholderLabel="Введите почту" }}
+            {{> input/input id="login" label="Логин" type="text" name="login" placeholderLabel="Введите логин" }}
+            {{> input/input id="name" label="Имя" type="text" name="first_name" placeholderLabel="Введите имя" }}
+            {{> input/input id="surname" label="Фамилия" type="text" name="second_name" placeholderLabel="Введите фамилию" }}
+            {{> input/input id="tel" label="Телефон" type="tel" name="phone" placeholderLabel="Введите телефон" }}
+            {{> input/input id="password_first" label="Пароль" type="password" name="password" placeholderLabel="Введите пароль" }}
+            {{> input/input id="password_second" label="Пароль (ещё раз)" type="password" name="password" placeholderLabel="Введите пароль повторно" }}
+            {{> buttonBase/buttonBase label="Зарегистрироваться" type="submit" className="registration_button__submit"}}
           </form>
         </div>
-        <div class="registration_buttons"> 
-          {{> buttonBase/buttonBase label='Зарегистрироваться'}}
-          <div class="registration_link-wrapper">
-            {{> link/link label="Войти" href="../login/login.hbs"}}
-          </div>
+        <div class="registration_link-wrapper">
+          {{> link/link label="Войти" href="../login/login.hbs"}}
         </div>
       </div>
     </main>

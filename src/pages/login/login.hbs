@@ -11,18 +11,16 @@
   <body>
     <main class="page-wrapper login">
       <div class="login_container">   
-        <div>
+        <div class="login_top-wrapper">
           {{> title/title label='Вход' }}
           <form class="login_form">
-            {{> input/input id='login' label='Логин' type='text' placeholderLabel='Введите логин' }}
-            {{> input/input id='password' label='Пароль' type='text' placeholderLabel='Введите пароль' }}
+            {{> input/input id='login' label='Логин' type='text' name='login' placeholderLabel='Введите логин' }}
+            {{> input/input id='password' label='Пароль' type='text' name='password' placeholderLabel='Введите пароль' }}
+            {{> buttonBase/buttonBase label='Авторизоваться' type="submit" className="login_button__submit"}}
           </form>
         </div>
-        <div class="login_buttons"> 
-          {{> buttonBase/buttonBase label='Авторизоваться'}}
-          <div class="login_link-wrapper">
-            {{> link/link label="Нет аккаунта?" href="../registration/registration.hbs"}}
-          </div>
+        <div class="login_link-wrapper">
+          {{> link/link label="Нет аккаунта?" href="../registration/registration.hbs"}}
         </div>
       </div>
     </main>
