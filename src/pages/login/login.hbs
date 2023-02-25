@@ -1,0 +1,28 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="../../../index.pcss" />
+    <link rel="stylesheet" href="./login.pcss" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="page-wrapper login">
+      <div class="login_container">   
+        <div class="login_top-wrapper">
+          {{> title/title label='Вход' }}
+          <form class="login_form">
+            {{> input/input id='login' label='Логин' type='text' name='login' placeholderLabel='Введите логин' }}
+            {{> input/input id='password' label='Пароль' type='text' name='password' placeholderLabel='Введите пароль' }}
+            {{> buttonBase/buttonBase label='Авторизоваться' type="submit" className="login_button__submit"}}
+          </form>
+        </div>
+        <div class="login_link-wrapper">
+          {{> link/link label="Нет аккаунта?" href="../registration/registration.hbs"}}
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

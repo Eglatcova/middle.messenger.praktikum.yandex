@@ -1,0 +1,52 @@
+---
+  props: {
+   name: 'Иван',
+   settings: {
+    email: 'pochta@yandex.ru',
+    login: 'ivanivanov',
+    name: 'Иван',
+    surname: 'Иванов',
+    phone: '+7 (909) 967 30 30'
+   }
+  }
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="../../../index.pcss" />
+    <link rel="stylesheet" href="./profile.pcss" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <main class="page-wrapper profile">
+      {{#extend "settingsContainer/settingsContainer"}}
+        {{#content "settings"}}
+          {{> avatar/avatar src="../../../static/icons/file.svg"}}
+          <h3 class="profile_name">{{props.name}}</h3>
+          <div class=" profile_settings">     
+            {{>settingsItem/settingsItem label="Почта" value=props.settings.email }}
+            {{>settingsItem/settingsItem label="Логин" value=props.settings.login }}
+            {{>settingsItem/settingsItem label="Имя" value=props.settings.name }}
+            {{>settingsItem/settingsItem label="Фамилия" value=props.settings.surname }}
+            {{>settingsItem/settingsItem label="Телефон" value=props.settings.phone }}
+          </div>
+          <div class="profile_links">
+            <div class="profile_link-wrapper">
+              {{> link/link label="Изменить данные" href="../profileSettings/profileSettings.hbs"}}
+            </div>
+            <div class="profile_link-wrapper">
+              {{> link/link label="Изменить пароль" href="../passwordSettings/passwordSettings.hbs"}}
+            </div>
+            <div class="profile_link-wrapper">
+              {{> link/link label="Выйти" isTomato=true}}
+            </div>
+          </div>
+        {{/content}}  
+      {{/extend}}
+    </main>
+  </body>
+</html>
