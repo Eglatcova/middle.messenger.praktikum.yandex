@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["DOM", "ES2015", "ESNext"],
+    "target": "ES6",
+    "declaration": false,
+    "module": "commonjs",
+    "strictNullChecks": true,
+    "sourceMap": true
+  }
+}
