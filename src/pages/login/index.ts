@@ -1,11 +1,12 @@
-import { Input, Title, ButtonBase, Link } from "../../components";
+import { Field, Title, ButtonBase, Link } from "../../components";
 import { Block } from "../../utils";
+import { Form } from "./components";
 import template from "./login.hbs";
 
 class Login extends Block {
   constructor() {
     const props = {
-      classNames: ["page-wrapper", "login"],
+      classNames: ["page-wrapper"],
     };
 
     super("main", props);
@@ -16,20 +17,24 @@ class Login extends Block {
       label: "Вход",
     });
 
-    this.children.inputLogin = new Input({
+    this.children.form = new Form();
+
+    this.children.fieldLogin = new Field({
       id: "login",
       label: "Логин",
       type: "text",
       name: "login",
       placeholder: "Введите логин",
+      required: true,
     });
 
-    this.children.inputPassword = new Input({
+    this.children.fieldPassword = new Field({
       id: "password",
       label: "Пароль",
       type: "text",
       name: "password",
       placeholder: "Введите пароль",
+      required: true,
     });
 
     this.children.button = new ButtonBase({

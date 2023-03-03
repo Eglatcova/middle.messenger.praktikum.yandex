@@ -8,6 +8,7 @@ interface ButtonBaseAttributes {
 interface ButtonBaseProps {
   label: string;
   attributes: ButtonBaseAttributes;
+  events?: Record<string, (event: Event) => void>;
   classNames?: string[];
 }
 

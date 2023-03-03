@@ -8,7 +8,7 @@ import { Error500 } from "../pages/error500";
 
 const ROUTES = {
   login: Login,
-  settings: ProfileSettings,
+  profileSettings: ProfileSettings,
   passwordSettings: PasswordSettings,
   profile: Profile,
   registration: Registration,

@@ -1,10 +1,10 @@
 import { Avatar } from "./avatar";
 import { ButtonBase } from "./buttonBase";
 import { ErrorBanner } from "./errorBanner";
-import { Input } from "./input";
+import { Field } from "./field";
 import { Link } from "./link";
 import { SettingsContainer } from "./settingsContainer";
-import { SettingsInput } from "./settingsInput";
+import { SettingsField } from "./settingsField";
 import { SettingsItem } from "./settingsItem";
 import { Title } from "./title";
 
@@ -12,10 +12,10 @@ export {
   Avatar,
   ButtonBase,
   ErrorBanner,
-  Input,
+  Field,
   Link,
   SettingsContainer,
-  SettingsInput,
+  SettingsField,
   SettingsItem,
   Title,
 };
