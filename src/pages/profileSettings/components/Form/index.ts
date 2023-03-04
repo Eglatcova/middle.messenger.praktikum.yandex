@@ -15,11 +15,10 @@ class Form extends Block {
           event.preventDefault();
 
           let isFormValid = true;
-          let passwordFirstVariant: null | string = null;
 
           const values = Array.from(event.target).reduce(
             (acc: Record<string, string>, item: HTMLElement) => {
-              if (item.tagName === "BUTTON") return acc;
+              if (item.tagName !== "INPUT") return acc;
 
               const { name, value, validity } = item as HTMLInputElement;
               if (!validity.valid) {
@@ -96,7 +95,7 @@ class Form extends Block {
       name: "tel",
       placeholder: "Введите телефон",
       pattern: Patterns.PHONE,
-      value: "+7 (909) 967 30 30",
+      value: "+79099673030",
       required: true,
     });
 

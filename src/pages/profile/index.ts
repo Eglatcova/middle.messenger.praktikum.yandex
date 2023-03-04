@@ -1,7 +1,8 @@
 import { Avatar, SettingsItem, Link, Title } from "../../components";
 import { Block } from "../../utils";
 import template from "./profile.hbs";
-import checkmark from "../../../static/icons/file.svg";
+import fileIcon from "../../../static/icons/file.svg";
+import { goTo } from "../../helpers";
 
 class Profile extends Block {
   constructor() {
@@ -14,7 +15,7 @@ class Profile extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      checkmark,
+      icon: fileIcon,
     });
 
     this.children.title = new Title({
@@ -51,7 +52,7 @@ class Profile extends Block {
       label: "Изменить данные",
       events: {
         click: () => {
-          console.log("route");
+          goTo("profileSettings");
         },
       },
     });
@@ -60,7 +61,7 @@ class Profile extends Block {
       label: "Изменить пароль",
       events: {
         click: () => {
-          console.log("route");
+          goTo("passwordSettings");
         },
       },
     });
@@ -69,7 +70,7 @@ class Profile extends Block {
       label: "Выйти",
       events: {
         click: () => {
-          console.log("route");
+          console.log("выход");
         },
       },
     });

@@ -2,7 +2,7 @@ import { Block } from "../../utils";
 import template from "./avatar.hbs";
 
 interface AvatarProps {
-  checkmark: string;
+  icon: string;
   classNames?: string[];
 }
 

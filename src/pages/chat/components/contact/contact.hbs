@@ -1,0 +1,16 @@
+<div class="chat_contact-user">
+  <div class="chat_contact-user-avatar-bg">
+    <img src="" alt="Аватар" />
+  </div>
+  <div class="chat_contact-user-info">
+    <span class="chat_contact-user-name">{{name}}</span>
+    <p class="chat_contact-user-message">{{message}}</p>
+  </div>
+
+</div>
+<div class="chat_contact-metadata">
+  <span class="chat_contact-metadata-time">{{time}}</span>
+  {{#if messagesNumber}}
+    <div class="chat_contact-metadata-message-counter">{{messagesNumber}}</div>
+  {{/if}}
+</div>

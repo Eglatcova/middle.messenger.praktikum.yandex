@@ -5,6 +5,8 @@ import { Profile } from "../pages/profile";
 import { Registration } from "../pages/registration";
 import { Error404 } from "../pages/error404";
 import { Error500 } from "../pages/error500";
+import { Chat } from "../pages/chat";
+import { Navigation } from "../pages/navigation";
 
 const ROUTES = {
   login: Login,
@@ -14,6 +16,8 @@ const ROUTES = {
   registration: Registration,
   error404: Error404,
   error500: Error500,
+  chat: Chat,
+  navigation: Navigation,
 };
 
 function goTo(route: keyof typeof ROUTES) {

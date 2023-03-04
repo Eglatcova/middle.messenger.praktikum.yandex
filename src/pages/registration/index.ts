@@ -1,4 +1,5 @@
 import { Title, ButtonBase, Link } from "../../components";
+import { goTo } from "../../helpers";
 import { Block } from "../../utils";
 import { Form } from "./components";
 import template from "./registration.hbs";
@@ -23,7 +24,7 @@ class Registration extends Block {
       label: "Войти",
       events: {
         click: () => {
-          console.log("route");
+          goTo("login");
         },
       },
     });

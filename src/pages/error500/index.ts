@@ -1,4 +1,5 @@
 import { Link, ErrorBanner } from "../../components";
+import { goTo } from "../../helpers";
 import { Block } from "../../utils";
 import template from "./error500.hbs";
 
@@ -21,7 +22,7 @@ class Error500 extends Block {
       label: "Назад к чатам",
       events: {
         click: () => {
-          console.log("route");
+          goTo("chat");
         },
       },
     });

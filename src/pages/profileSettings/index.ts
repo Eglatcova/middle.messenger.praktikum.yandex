@@ -1,7 +1,7 @@
 import { Avatar } from "../../components";
 import { Block } from "../../utils";
 import template from "./profileSettings.hbs";
-import checkmark from "../../../static/icons/file.svg";
+import fileIcon from "../../../static/icons/file.svg";
 import { Form } from "./components";
 
 class ProfileSettings extends Block {
@@ -15,7 +15,7 @@ class ProfileSettings extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      checkmark,
+      icon: fileIcon,
     });
 
     this.children.form = new Form();

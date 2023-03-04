@@ -1,5 +1,5 @@
-import { goTo } from "./src/utils";
+import { goTo } from "./src/helpers";
 
 window.addEventListener("DOMContentLoaded", () => {
-  goTo("profileSettings");
+  goTo("navigation");
 });

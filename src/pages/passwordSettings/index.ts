@@ -1,7 +1,8 @@
-import { SettingsInput, Avatar, ButtonBase } from "../../components";
+import { Avatar, ButtonBase } from "../../components";
 import { Block } from "../../utils";
 import template from "./passwordSettings.hbs";
-import checkmark from "../../../static/icons/file.svg";
+import fileIcon from "../../../static/icons/file.svg";
+import { Form } from "./components";
 
 class PasswordSettings extends Block {
   constructor() {
@@ -14,26 +15,10 @@ class PasswordSettings extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      checkmark,
+      icon: fileIcon,
     });
 
-    this.children.inputPasswordStep1 = new SettingsInput({
-      id: "password_step_1",
-      label: "Новый пароль",
-      type: "password",
-      name: "password",
-      placeholder: "Введите пароль",
-      value: "xxxxxxxx",
-    });
-
-    this.children.inputPasswordStep2 = new SettingsInput({
-      id: "password_step_2",
-      label: "Повторите новый пароль",
-      type: "password",
-      name: "password",
-      placeholder: "Введите пароль",
-      value: "xxxxxxxx",
-    });
+    this.children.form = new Form();
 
     this.children.buttonBase = new ButtonBase({
       label: "Сохранить",

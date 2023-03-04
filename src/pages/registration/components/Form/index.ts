@@ -19,8 +19,9 @@ class Form extends Block {
 
           const values = Array.from(event.target).reduce(
             (acc: Record<string, string>, item: HTMLInputElement) => {
-              const { name, value, validity } = item;
+              if (item.tagName !== "INPUT") return acc;
 
+              const { name, value, validity } = item;
               if (!validity.valid) {
                 isFormValid = false;
               }
@@ -107,7 +108,7 @@ class Form extends Block {
       required: true,
     });
 
-    this.children.fieldPasswordStep1 = new Field({
+    this.children.fieldPassword1 = new Field({
       id: "password_step_1",
       label: "Пароль",
       type: "password",
@@ -117,7 +118,7 @@ class Form extends Block {
       required: true,
     });
 
-    this.children.fieldPasswordStep2 = new Field({
+    this.children.fieldPassword2 = new Field({
       id: "password_step_2",
       label: "Пароль (ещё раз)",
       type: "password",

@@ -7,8 +7,8 @@ interface SettingsFieldProps {
   label: string;
   type: string;
   name: string;
-  placeholder: string;
-  value: string;
+  placeholder?: string;
+  value?: string;
   required?: boolean;
   pattern?: string;
   classNames?: string[];
@@ -21,7 +21,7 @@ class SettingsField extends Block {
   }
 
   init() {
-    const { id, type, name, pattern, required, value } = this.props;
+    const { id, type, name, pattern, required, value = "" } = this.props;
     this.children.input = new SettingsInput({
       attributes: {
         id,

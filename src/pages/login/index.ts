@@ -1,4 +1,5 @@
 import { Field, Title, ButtonBase, Link } from "../../components";
+import { goTo } from "../../helpers";
 import { Block } from "../../utils";
 import { Form } from "./components";
 import template from "./login.hbs";
@@ -37,19 +38,11 @@ class Login extends Block {
       required: true,
     });
 
-    this.children.button = new ButtonBase({
-      label: "Авторизоваться",
-      classNames: ["login_button__submit"],
-      attributes: {
-        type: "submit",
-      },
-    });
-
     this.children.link = new Link({
       label: "Нет аккаунта?",
       events: {
         click: () => {
-          console.log("route");
+          goTo("registration");
         },
       },
     });

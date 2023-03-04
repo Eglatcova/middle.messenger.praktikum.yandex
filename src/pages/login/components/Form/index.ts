@@ -65,8 +65,8 @@ class Form extends Block {
     });
 
     this.children.button = new ButtonBase({
-      label: "Зарегистрироваться",
-      classNames: ["registration_button__submit"],
+      label: "Авторизоваться",
+      classNames: ["login_button__submit"],
       attributes: {
         type: "submit",
       },
