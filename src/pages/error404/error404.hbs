@@ -1,19 +1,4 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="../../../index.pcss" />
-    <link rel="stylesheet" href="./error404.pcss" />
-    <title>Document</title>
-  </head>
-  <body>
-    <main class="page-wrapper error404">
-      <div class="error404_container">
-        {{> errorBanner/errorBanner code='404' text='Не туда попали'}}   
-        {{> link/link label='Назад к чатам' href='/'}}
-       </div>
-    </main>
-  </body>
-</html>
+<div class="error_container">
+  {{{errorBanner}}}
+  {{{link}}}
+</div>
