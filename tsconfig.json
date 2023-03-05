@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["DOM", "ES2015", "ESNext"],
+    "target": "ES6",
+    "declaration": false,
+    "module": "ES6",
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node"
+  }
+}

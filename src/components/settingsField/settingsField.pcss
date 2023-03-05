@@ -1,0 +1,38 @@
+.settings-input_wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--greyLight);
+}
+
+.settings-input_input {
+  width: 200px;
+  height: 24px;
+  font-size: 13px;
+  border: none;
+  outline: none;
+  color: var(--grey);
+  border-bottom: solid transparent 1px;
+  transition: border-bottom 0.3s;
+}
+
+.settings-input_input.invalid {
+  border-bottom: solid var(--red) 1px;
+}
+
+.settings-input_error {
+  width: 200px;
+  display: none;
+  position: absolute;
+  font-size: 8px;
+  top: 35px;
+  right: 0px;
+  color: var(--red);
+}
+
+.settings-input_input.invalid + .settings-input_error {
+  display: block;
+}
