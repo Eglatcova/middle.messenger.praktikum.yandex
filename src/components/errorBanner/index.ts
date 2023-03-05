@@ -1,13 +1,13 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./errorBanner.hbs";
 
-interface ErrorBannerProps {
+interface ErrorBannerProps extends BaseBlockProps {
   code: string;
   text: string;
-  classNames?: string[];
 }
 
-class ErrorBanner extends Block {
+class ErrorBanner extends Block<ErrorBannerProps> {
   constructor(props: ErrorBannerProps) {
     props.classNames = ["error-banner"];
     super("div", props);

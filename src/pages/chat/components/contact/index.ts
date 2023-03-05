@@ -1,15 +1,15 @@
 import { Block } from "../../../../utils";
+import { BaseBlockProps } from "../../../../utils/types";
 import template from "./contact.hbs";
 
-interface ContactProps {
+interface ContactProps extends BaseBlockProps {
   name: string;
   message: string;
   time: string;
   messagesNumber: number;
-  classNames?: string[];
 }
 
-class Contact extends Block {
+class Contact extends Block<ContactProps> {
   constructor(props: ContactProps) {
     props.classNames = ["chat_contact"];
 

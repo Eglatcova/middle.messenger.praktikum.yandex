@@ -1,27 +1,29 @@
 import { Block } from "../../../../utils";
 import { Field, Title, ButtonBase } from "../../../../components";
 import template from "./form.hbs";
-import { Patterns } from "../../../../constants";
+import { Patterns, ValidationErrors } from "../../../../constants";
+import { BaseBlockProps } from "../../../../utils/types";
 
 class Form extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["registration_form"],
       attributes: {
         novalidate: true,
       },
       events: {
-        submit: async (event) => {
+        submit: async (event: SubmitEvent) => {
           event.preventDefault();
 
+          const formElements = event.target as HTMLFormElement;
           let isFormValid = true;
           let passwordFirstVariant: null | string = null;
 
-          const values = Array.from(event.target).reduce(
-            (acc: Record<string, string>, item: HTMLInputElement) => {
+          const values = Array.from(formElements).reduce(
+            (acc: Record<string, string>, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
-              const { name, value, validity } = item;
+              const { name, value, validity } = item as HTMLInputElement;
               if (!validity.valid) {
                 isFormValid = false;
               }
@@ -65,6 +67,7 @@ class Form extends Block {
       name: "email",
       placeholder: "Введите почту",
       pattern: Patterns.EMAIL,
+      errorMessage: ValidationErrors.EMAIL,
       required: true,
     });
 
@@ -75,6 +78,7 @@ class Form extends Block {
       name: "login",
       placeholder: "Введите логин",
       pattern: Patterns.LOGIN,
+      errorMessage: ValidationErrors.LOGIN,
       required: true,
     });
 
@@ -85,6 +89,7 @@ class Form extends Block {
       name: "first_name",
       placeholder: "Введите имя",
       pattern: Patterns.NAME,
+      errorMessage: ValidationErrors.NAME,
       required: true,
     });
 
@@ -95,6 +100,7 @@ class Form extends Block {
       name: "surname",
       placeholder: "Введите фамилию",
       pattern: Patterns.NAME,
+      errorMessage: ValidationErrors.SURNAME,
       required: true,
     });
 
@@ -105,6 +111,7 @@ class Form extends Block {
       name: "tel",
       placeholder: "Введите телефон",
       pattern: Patterns.PHONE,
+      errorMessage: ValidationErrors.PHONE,
       required: true,
     });
 
@@ -115,6 +122,7 @@ class Form extends Block {
       name: "password",
       placeholder: "Введите пароль",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 
@@ -125,6 +133,7 @@ class Form extends Block {
       name: "password",
       placeholder: "Введите пароль повторно",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 

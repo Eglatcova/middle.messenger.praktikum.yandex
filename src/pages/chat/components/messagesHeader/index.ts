@@ -1,14 +1,14 @@
 import dotsIcon from "../../../../../static/icons/dots.svg";
 import { Block } from "../../../../utils";
+import { BaseBlockProps } from "../../../../utils/types";
 import template from "./messagesHeader.hbs";
 
-interface MessagesHeaderProps {
+interface MessagesHeaderProps extends BaseBlockProps {
   name: string;
   dotsIcon?: string;
-  classNames?: string[];
 }
 
-class MessagesHeader extends Block {
+class MessagesHeader extends Block<MessagesHeaderProps> {
   constructor(props: MessagesHeaderProps) {
     props.classNames = ["contacts_header"];
     props.dotsIcon = dotsIcon;

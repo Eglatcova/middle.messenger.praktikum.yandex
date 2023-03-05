@@ -1,22 +1,24 @@
 import { Block } from "../../../../utils";
 import { ButtonBase, SettingsField } from "../../../../components";
 import template from "./form.hbs";
-import { Patterns } from "../../../../constants";
+import { Patterns, ValidationErrors } from "../../../../constants";
+import { BaseBlockProps } from "../../../../utils/types";
 
 class Form extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["profile-settings_form"],
       attributes: {
         novalidate: true,
       },
       events: {
-        submit: async (event) => {
+        submit: async (event: SubmitEvent) => {
           event.preventDefault();
 
+          const formElement = event.target as HTMLFormElement;
           let isFormValid = true;
 
-          const values = Array.from(event.target).reduce(
+          const values = Array.from(formElement).reduce(
             (acc: Record<string, string>, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
@@ -51,6 +53,7 @@ class Form extends Block {
       name: "email",
       placeholder: "Введите почту",
       pattern: Patterns.EMAIL,
+      errorMessage: ValidationErrors.EMAIL,
       value: "pochta@yandex.ru",
       required: true,
     });
@@ -62,6 +65,7 @@ class Form extends Block {
       name: "login",
       placeholder: "Введите логин",
       pattern: Patterns.LOGIN,
+      errorMessage: ValidationErrors.LOGIN,
       value: "ivanivanov",
       required: true,
     });
@@ -73,6 +77,7 @@ class Form extends Block {
       name: "first_name",
       placeholder: "Введите имя",
       pattern: Patterns.NAME,
+      errorMessage: ValidationErrors.NAME,
       value: "Иван",
       required: true,
     });
@@ -84,6 +89,7 @@ class Form extends Block {
       name: "surname",
       placeholder: "Введите фамилию",
       pattern: Patterns.NAME,
+      errorMessage: ValidationErrors.SURNAME,
       value: "Иванов",
       required: true,
     });
@@ -95,6 +101,7 @@ class Form extends Block {
       name: "tel",
       placeholder: "Введите телефон",
       pattern: Patterns.PHONE,
+      errorMessage: ValidationErrors.PHONE,
       value: "+79099673030",
       required: true,
     });

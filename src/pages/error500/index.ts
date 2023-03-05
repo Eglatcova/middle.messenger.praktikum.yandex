@@ -1,11 +1,12 @@
 import { Link, ErrorBanner } from "../../components";
 import { goTo } from "../../helpers";
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./error500.hbs";
 
-class Error500 extends Block {
+class Error500 extends Block<BaseBlockProps> {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["page-wrapper"],
     };
 

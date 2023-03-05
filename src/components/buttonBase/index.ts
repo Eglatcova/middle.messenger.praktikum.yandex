@@ -1,18 +1,12 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./buttonBase.hbs";
 
-interface ButtonBaseAttributes {
-  type: string;
-}
-
-interface ButtonBaseProps {
+interface ButtonBaseProps extends BaseBlockProps {
   label: string;
-  attributes: ButtonBaseAttributes;
-  events?: Record<string, (event: Event) => void>;
-  classNames?: string[];
 }
 
-class ButtonBase extends Block {
+class ButtonBase extends Block<ButtonBaseProps> {
   constructor(props: ButtonBaseProps) {
     const { classNames } = props;
 

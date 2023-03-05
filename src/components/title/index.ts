@@ -1,12 +1,12 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./title.hbs";
 
-interface TitleProps {
+interface TitleProps extends BaseBlockProps {
   label: string;
-  classNames?: string[];
 }
 
-class Title extends Block {
+class Title extends Block<TitleProps> {
   constructor(props: TitleProps) {
     const { classNames } = props;
 

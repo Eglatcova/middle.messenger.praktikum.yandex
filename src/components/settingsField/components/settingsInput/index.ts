@@ -1,21 +1,20 @@
 import { Block } from "../../../../utils";
+import { BaseBlockProps } from "../../../../utils/types";
 import template from "./settingsInput.hbs";
 
-interface SettingsInputProps {
-  classNames?: string[];
+interface SettingsInputProps extends BaseBlockProps {
   attributes: {
     id: string;
     type: string;
     name: string;
-    required: string;
     value: string;
+    required?: boolean;
     pattern?: string;
     placeholder?: string;
   };
-  events?: Record<string, (event: any) => void>;
 }
 
-class SettingsInput extends Block {
+class SettingsInput extends Block<SettingsInputProps> {
   constructor(props: SettingsInputProps) {
     props.classNames = ["settings-input_input"];
 

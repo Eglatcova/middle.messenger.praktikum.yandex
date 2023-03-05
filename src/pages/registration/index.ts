@@ -1,12 +1,13 @@
-import { Title, ButtonBase, Link } from "../../components";
+import { Title, Link } from "../../components";
 import { goTo } from "../../helpers";
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import { Form } from "./components";
 import template from "./registration.hbs";
 
 class Registration extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["page-wrapper"],
     };
 

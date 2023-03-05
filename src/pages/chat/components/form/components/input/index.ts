@@ -13,7 +13,7 @@ interface InputProps {
   events?: Record<string, (event: any) => void>;
 }
 
-class Input extends Block {
+class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     props.classNames = ["chat_form-input"];
 

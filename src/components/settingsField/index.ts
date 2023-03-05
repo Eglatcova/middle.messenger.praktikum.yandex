@@ -1,20 +1,21 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import { SettingsInput } from "./components";
 import template from "./settingsField.hbs";
 
-interface SettingsFieldProps {
+interface SettingsFieldProps extends BaseBlockProps {
   id: string;
   label: string;
   type: string;
   name: string;
+  pattern: string;
+  errorMessage: string;
   placeholder?: string;
   value?: string;
   required?: boolean;
-  pattern?: string;
-  classNames?: string[];
 }
 
-class SettingsField extends Block {
+class SettingsField extends Block<SettingsFieldProps> {
   constructor(props: SettingsFieldProps) {
     props.classNames = ["settings-input_wrapper"];
     super("div", props);

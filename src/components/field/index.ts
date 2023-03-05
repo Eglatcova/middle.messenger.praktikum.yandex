@@ -1,19 +1,20 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import { Input } from "./components";
 import template from "./field.hbs";
 
-interface FieldProps {
+interface FieldProps extends BaseBlockProps {
   id: string;
   label: string;
   type: string;
   name: string;
   placeholder: string;
   required?: boolean;
+  errorMessage: string;
   pattern?: string;
-  classNames?: string[];
 }
 
-class Field extends Block {
+class Field extends Block<FieldProps> {
   constructor(props: FieldProps) {
     props.classNames = ["input_wrapper"];
     super("div", props);

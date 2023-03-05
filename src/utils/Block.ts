@@ -1,7 +1,8 @@
 import { nanoid } from "nanoid";
 import { EventBus } from "./EventBus";
+import { BaseBlockProps } from "./types";
 
-class Block {
+class Block<Props extends BaseBlockProps = BaseBlockProps> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -11,14 +12,14 @@ class Block {
 
   private eventBus: () => EventBus;
   private _element: HTMLElement;
-  private _meta: { tagName: string; props: any };
+  private _meta: { tagName: string; props: Props };
 
-  protected props: any;
+  protected props: Props;
 
   public id = nanoid(6);
-  public children: Record<string, Block>;
+  public children: Record<string, Block<BaseBlockProps>>;
 
-  constructor(tagName = "div", propsWithChildren: any = {}) {
+  constructor(tagName = "div", propsWithChildren: Props = {} as Props) {
     const eventBus = new EventBus();
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
@@ -32,15 +33,16 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(propsWithChildren: any) {
-    const props: Record<string, any> = {};
-    const children: Record<string, Block> = {};
+  _getChildrenAndProps(propsWithChildren: Props) {
+    const props: Props = {} as Props;
+    const children: Record<string, Block<BaseBlockProps>> = {};
 
     Object.entries(propsWithChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
       } else {
-        props[key] = value;
+        const currKey = key as keyof Props;
+        props[currKey] = value;
       }
     });
 
@@ -48,7 +50,7 @@ class Block {
   }
 
   _addEvents() {
-    const { events = {} }: { events: Record<string, () => void> } = this.props;
+    const { events = {} } = this.props;
 
     Object.entries(events).forEach(([name, cb]) => {
       this._element.addEventListener(name, cb);
@@ -56,8 +58,7 @@ class Block {
   }
 
   _addAttributes() {
-    const { attributes = {} }: { attributes: Record<string, string> } =
-      this.props;
+    const { attributes = {} } = this.props;
 
     Object.entries(attributes).forEach(([name, value]) => {
       this._element.setAttribute(name, value);
@@ -65,10 +66,18 @@ class Block {
   }
 
   _addClassNames() {
-    const { classNames = [] }: { classNames: string[] } = this.props;
+    const { classNames = [] } = this.props;
 
     classNames.forEach((className) => {
       this._element.classList.add(className);
+    });
+  }
+
+  _removeEvents() {
+    const { events = {} } = this.props;
+
+    Object.entries(events).forEach(([name, cb]) => {
+      this._element.removeEventListener(name, cb);
     });
   }
 
@@ -108,17 +117,18 @@ class Block {
     );
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -156,7 +166,7 @@ class Block {
     const temp = document.createElement("template");
     temp.innerHTML = html;
 
-    Object.entries(this.children).forEach(([_, component]) => {
+    Object.entries(this.children).forEach(([, component]) => {
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
 
       if (!stub) return;
@@ -172,15 +182,15 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
-        const value = target[prop];
+      get(target: Props, prop: keyof Props & string) {
+        const value: any = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target: Props, prop: keyof Props & string, value) {
         const oldTarget = { ...target };
         target[prop] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);

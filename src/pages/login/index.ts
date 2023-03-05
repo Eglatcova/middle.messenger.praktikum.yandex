@@ -1,12 +1,13 @@
-import { Field, Title, ButtonBase, Link } from "../../components";
+import { Title, Link } from "../../components";
 import { goTo } from "../../helpers";
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import { Form } from "./components";
 import template from "./login.hbs";
 
 class Login extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["page-wrapper"],
     };
 
@@ -19,24 +20,6 @@ class Login extends Block {
     });
 
     this.children.form = new Form();
-
-    this.children.fieldLogin = new Field({
-      id: "login",
-      label: "Логин",
-      type: "text",
-      name: "login",
-      placeholder: "Введите логин",
-      required: true,
-    });
-
-    this.children.fieldPassword = new Field({
-      id: "password",
-      label: "Пароль",
-      type: "text",
-      name: "password",
-      placeholder: "Введите пароль",
-      required: true,
-    });
 
     this.children.link = new Link({
       label: "Нет аккаунта?",

@@ -1,24 +1,26 @@
 import { Block } from "../../../../utils";
 import template from "./form.hbs";
-import { Patterns } from "../../../../constants";
+import { Patterns, ValidationErrors } from "../../../../constants";
 import { ButtonBase, Field } from "../../../../components";
+import { BaseBlockProps } from "../../../../utils/types";
 
 class Form extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["login_form"],
       attributes: {
         novalidate: true,
       },
       events: {
-        submit: async (event) => {
+        submit: async (event: SubmitEvent) => {
           event.preventDefault();
 
+          const formElement = event.target as HTMLFormElement;
           let isFormValid = true;
 
-          const values = Array.from(event.target).reduce(
+          const values = Array.from(formElement).reduce(
             (acc: Record<string, string>, item: HTMLElement) => {
-              if (item.tagName === "BUTTON") return acc;
+              if (item.tagName !== "INPUT") return acc;
 
               const { name, value, validity } = item as HTMLInputElement;
               if (!validity.valid) {
@@ -51,6 +53,7 @@ class Form extends Block {
       name: "login",
       placeholder: "Введите логин",
       pattern: Patterns.LOGIN,
+      errorMessage: ValidationErrors.LOGIN,
       required: true,
     });
 
@@ -61,6 +64,7 @@ class Form extends Block {
       name: "password",
       placeholder: "Введите пароль",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 

@@ -1,13 +1,12 @@
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./link.hbs";
 
-interface LinkProps {
+interface LinkProps extends BaseBlockProps {
   label: string;
-  events: Record<string, () => void>;
-  classNames?: string[];
 }
 
-class Link extends Block {
+class Link extends Block<LinkProps> {
   constructor(props: LinkProps) {
     const { classNames } = props;
 

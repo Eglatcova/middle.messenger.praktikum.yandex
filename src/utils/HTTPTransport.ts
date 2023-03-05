@@ -10,7 +10,12 @@ interface XMLHttpRequestOptions {
   method: METHODS;
 }
 
-const queryStringify = (data) => {
+type HTTPMethod = (
+  url: string,
+  options: XMLHttpRequestOptions
+) => Promise<unknown>;
+
+const queryStringify = (data: any) => {
   const searchParams: string[] = [];
 
   Object.entries(data).forEach(([key, value]) => {
@@ -30,29 +35,26 @@ class HTTPTransport {
   get = (
     url: string,
     options: XMLHttpRequestOptions
-  ): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: METHODS.GET });
-  };
+  ): Promise<XMLHttpRequest> =>
+    this.request(url, { ...options, method: METHODS.GET });
 
-  post = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.POST });
-  };
+  post: HTTPMethod = (url, options) =>
+    this.request(url, { ...options, method: METHODS.POST });
 
-  put = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.PUT });
-  };
+  put: HTTPMethod = (url: string, options) =>
+    this.request(url, { ...options, method: METHODS.PUT });
 
-  delete = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.DELETE });
-  };
+  delete: HTTPMethod = (url: string, options) =>
+    this.request(url, { ...options, method: METHODS.DELETE });
 
-  request = (url, options, timeout = 5000) => {
+  request = (url: string, options: XMLHttpRequestOptions, timeout = 5000) => {
     const { method, data } = options;
 
     const promise: Promise<XMLHttpRequest> = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      const newUrl =
-        method === METHODS.GET && data ? `${url}${queryStringify(data)}` : url;
+      const urlWithQuery = (currUrl: string) =>
+        `${currUrl}${queryStringify(data)}`;
+      const newUrl = method === METHODS.GET && data ? urlWithQuery(url) : url;
       xhr.open(method, newUrl);
 
       xhr.timeout = timeout;

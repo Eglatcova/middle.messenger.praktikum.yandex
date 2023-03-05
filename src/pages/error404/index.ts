@@ -1,11 +1,12 @@
 import { Link, ErrorBanner } from "../../components";
 import { goTo } from "../../helpers";
 import { Block } from "../../utils";
+import { BaseBlockProps } from "../../utils/types";
 import template from "./error404.hbs";
 
 class Error404 extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["page-wrapper"],
     };
 

@@ -3,10 +3,14 @@ import template from "./chat.hbs";
 import { Contact, Form, Message, MessagesHeader } from "./components";
 import { Link } from "../../components";
 import { goTo } from "../../helpers";
+import { BaseBlockProps } from "../../utils/types";
 
-class Chat extends Block {
+interface ChatProps extends BaseBlockProps {
+  name: string;
+}
+class Chat extends Block<ChatProps> {
   constructor() {
-    const props = {
+    const props: ChatProps = {
       classNames: ["chat_wrapper"],
       name: "Вадим",
     };

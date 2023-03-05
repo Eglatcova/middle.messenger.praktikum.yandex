@@ -7,7 +7,7 @@ interface SettingsItemProps {
   classNames?: string[];
 }
 
-class SettingsItem extends Block {
+class SettingsItem extends Block<SettingsItemProps> {
   constructor(props: SettingsItemProps) {
     props.classNames = ["item"];
     super("div", props);

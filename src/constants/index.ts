@@ -1,3 +1,4 @@
 import { Patterns } from "./Patterns";
+import { ValidationErrors } from "./ValidationErrors";
 
-export { Patterns };
+export { Patterns, ValidationErrors };

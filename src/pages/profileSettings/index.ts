@@ -3,10 +3,11 @@ import { Block } from "../../utils";
 import template from "./profileSettings.hbs";
 import fileIcon from "../../../static/icons/file.svg";
 import { Form } from "./components";
+import { BaseBlockProps } from "../../utils/types";
 
 class ProfileSettings extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["page-wrapper", "profile"],
     };
 

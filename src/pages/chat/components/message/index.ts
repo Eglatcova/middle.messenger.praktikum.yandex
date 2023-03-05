@@ -1,13 +1,13 @@
 import { Block } from "../../../../utils";
+import { BaseBlockProps } from "../../../../utils/types";
 import template from "./message.hbs";
 
-interface MessageProps {
+interface MessageProps extends BaseBlockProps {
   text: string;
   time: string;
-  classNames?: string[];
 }
 
-class Message extends Block {
+class Message extends Block<MessageProps> {
   constructor(props: MessageProps) {
     props.classNames = ["chat_message"];
 

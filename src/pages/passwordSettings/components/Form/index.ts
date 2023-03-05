@@ -1,23 +1,25 @@
 import { Block } from "../../../../utils";
-import { ButtonBase, Field, SettingsField } from "../../../../components";
+import { ButtonBase, SettingsField } from "../../../../components";
 import template from "./form.hbs";
-import { Patterns } from "../../../../constants";
+import { Patterns, ValidationErrors } from "../../../../constants";
+import { BaseBlockProps } from "../../../../utils/types";
 
 class Form extends Block {
   constructor() {
-    const props = {
+    const props: BaseBlockProps = {
       classNames: ["password-settings_form"],
       attributes: {
         novalidate: true,
       },
       events: {
-        submit: async (event) => {
+        submit: async (event: Event) => {
           event.preventDefault();
 
+          const formElement = event.target as HTMLFormElement;
           let isFormValid = true;
           let passwordFirstVariant: null | string = null;
 
-          const values = Array.from(event.target).reduce(
+          const values = Array.from(formElement).reduce(
             (acc: Record<string, string>, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
@@ -63,6 +65,7 @@ class Form extends Block {
       type: "password",
       name: "password",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 
@@ -72,6 +75,7 @@ class Form extends Block {
       type: "password",
       name: "password",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 
@@ -81,6 +85,7 @@ class Form extends Block {
       type: "password",
       name: "password",
       pattern: Patterns.PASSWORD,
+      errorMessage: ValidationErrors.PASSWORD,
       required: true,
     });
 

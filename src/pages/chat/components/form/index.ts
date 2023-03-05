@@ -2,7 +2,6 @@ import { Block } from "../../../../utils";
 import snippetIcon from "../../../../../static/icons/snippet.svg";
 import arrowBigIcon from "../../../../../static/icons/arrowBig.svg";
 import template from "./form.hbs";
-import { Input } from "./components";
 
 class Form extends Block {
   constructor() {
@@ -14,12 +13,13 @@ class Form extends Block {
         novalidate: true,
       },
       events: {
-        submit: async (event) => {
+        submit: async (event: SubmitEvent) => {
           event.preventDefault();
 
+          const formElement = event.target as HTMLFormElement;
           let isFormValid = true;
 
-          const values = Array.from(event.target).reduce(
+          const values = Array.from(formElement).reduce(
             (acc: Record<string, string>, item: HTMLInputElement) => {
               if (item.tagName !== "INPUT") {
                 return acc;
