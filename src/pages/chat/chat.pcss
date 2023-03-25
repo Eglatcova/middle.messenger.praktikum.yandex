@@ -1,0 +1,47 @@
+@import "./components/contact/contact.pcss";
+@import "./components/messagesHeader/messagesHeader.pcss";
+@import "./components/form/form.pcss";
+@import "./components/message/message.pcss";
+
+.chat_wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+
+.chat_contacts {
+  background: var(--greyVeryLight);
+  padding: 0 10px;
+}
+
+.chat_contacts-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.chat_contacts-list {
+  border-top: solid 1px var(--greyLight);
+}
+
+.chat_messages {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat_messages-block {
+  padding: 24px 0;
+  flex-grow: 1;
+}
+
+.chat_messages-form-wrapper {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: solid 1px var(--greyLight);
+}
