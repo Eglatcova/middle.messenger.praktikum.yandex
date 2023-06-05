@@ -1,9 +1,9 @@
 import { Avatar } from "../../components";
-import { Block } from "../../utils";
+import { Block } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import template from "./profileSettings.hbs";
 import fileIcon from "../../../static/icons/file.svg";
 import { Form } from "./components";
-import { BaseBlockProps } from "../../utils/types";
 
 class ProfileSettings extends Block {
   constructor() {

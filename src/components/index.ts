@@ -6,6 +6,7 @@ import { Link } from "./link";
 import { SettingsField } from "./settingsField";
 import { SettingsItem } from "./settingsItem";
 import { Title } from "./title";
+import { Popup } from "./popup";
 
 export {
   Avatar,
@@ -16,4 +17,5 @@ export {
   SettingsField,
   SettingsItem,
   Title,
+  Popup,
 };

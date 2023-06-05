@@ -1,0 +1,32 @@
+@import "./components/chat/chat.pcss";
+@import "./components/messages/messages.pcss";
+@import "./components/controls/controls.pcss";
+
+.messenger {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+
+.messenger_contacts {
+  background: var(--greyVeryLight);
+  padding: 0 10px;
+}
+
+.messenger_contacts-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.messenger_contacts-list {
+  border-top: solid 1px var(--greyLight);
+}
+
+.messenger_create-button-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}

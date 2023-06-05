@@ -1,8 +1,8 @@
-import { Block } from "../../../../utils";
+import { Block } from "../../../../services";
+import { BaseBlockProps } from "../../../../services/types";
 import { ButtonBase, SettingsField } from "../../../../components";
 import template from "./form.hbs";
 import { Patterns, ValidationErrors } from "../../../../constants";
-import { BaseBlockProps } from "../../../../utils/types";
 
 class Form extends Block {
   constructor() {

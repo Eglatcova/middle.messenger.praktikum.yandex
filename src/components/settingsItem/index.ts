@@ -1,4 +1,4 @@
-import { Block } from "../../utils";
+import { Block } from "../../services";
 import template from "./settingsItem.hbs";
 
 interface SettingsItemProps {

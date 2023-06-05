@@ -1,10 +1,10 @@
 import { Link, ErrorBanner } from "../../components";
-import { goTo } from "../../helpers";
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Routes } from "../../constants";
+import { Block, Router } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import template from "./error500.hbs";
 
-class Error500 extends Block<BaseBlockProps> {
+class Error500 extends Block {
   constructor() {
     const props: BaseBlockProps = {
       classNames: ["page-wrapper"],
@@ -23,7 +23,7 @@ class Error500 extends Block<BaseBlockProps> {
       label: "Назад к чатам",
       events: {
         click: () => {
-          goTo("chat");
+          Router.go(Routes.PROFILE);
         },
       },
     });
