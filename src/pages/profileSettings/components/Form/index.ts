@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Block } from "../../../../services";
-import { BaseBlockProps } from "../../../../services/types";
 import { ButtonBase, SettingsField } from "../../../../components";
 import template from "./form.hbs";
 import { Patterns, ValidationErrors } from "../../../../constants";
+import { userController } from "../../../../controllers";
+import { FormProps, FormIncomingProps } from "./types";
 
-class Form extends Block {
-  constructor() {
-    const props: BaseBlockProps = {
+class Form extends Block<FormProps> {
+  constructor(incomingProps: FormIncomingProps) {
+    const props: FormProps = {
       classNames: ["profile-settings_form"],
       attributes: {
         novalidate: true,
@@ -32,6 +34,18 @@ class Form extends Block {
           );
 
           if (isFormValid) {
+            console.log("values", values);
+
+            const { login, first_name, second_name, phone, email } = values;
+
+            userController.cheangeProfile({
+              login,
+              first_name,
+              second_name,
+              phone,
+              email,
+              display_name: login,
+            });
             alert("Данные отправлены");
           } else {
             alert("Поля формы заполнены неправильно");
@@ -40,6 +54,7 @@ class Form extends Block {
           console.log(values);
         },
       },
+      ...incomingProps,
     };
 
     super("form", props);
@@ -54,7 +69,7 @@ class Form extends Block {
       placeholder: "Введите почту",
       pattern: Patterns.EMAIL,
       errorMessage: ValidationErrors.EMAIL,
-      value: "pochta@yandex.ru",
+      value: this.props.email,
       required: true,
     });
 
@@ -66,7 +81,7 @@ class Form extends Block {
       placeholder: "Введите логин",
       pattern: Patterns.LOGIN,
       errorMessage: ValidationErrors.LOGIN,
-      value: "ivanivanov",
+      value: this.props.login,
       required: true,
     });
 
@@ -78,7 +93,7 @@ class Form extends Block {
       placeholder: "Введите имя",
       pattern: Patterns.NAME,
       errorMessage: ValidationErrors.NAME,
-      value: "Иван",
+      value: this.props.first_name,
       required: true,
     });
 
@@ -86,11 +101,11 @@ class Form extends Block {
       id: "surname",
       label: "Фамилия",
       type: "text",
-      name: "surname",
+      name: "second_name",
       placeholder: "Введите фамилию",
       pattern: Patterns.NAME,
       errorMessage: ValidationErrors.SURNAME,
-      value: "Иванов",
+      value: this.props.second_name,
       required: true,
     });
 
@@ -98,11 +113,11 @@ class Form extends Block {
       id: "tel",
       label: "Телефон",
       type: "tel",
-      name: "tel",
+      name: "phone",
       placeholder: "Введите телефон",
       pattern: Patterns.PHONE,
       errorMessage: ValidationErrors.PHONE,
-      value: "+79099673030",
+      value: this.props.phone,
       required: true,
     });
 

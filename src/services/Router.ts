@@ -1,6 +1,5 @@
 /* eslint-disable no-constructor-return */
 /* eslint-disable max-classes-per-file */
-
 import { Block } from "./Block";
 import { BaseBlockProps } from "./types";
 

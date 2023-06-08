@@ -21,7 +21,6 @@ const mapStateToProps = (state: State): ConnectedProps => {
   };
 };
 
-// eslint-disable-next-line operator-linebreak
 const MessagesHeader =
   Connect<ConnectedProps>(mapStateToProps)(MessagesHeaderView);
 

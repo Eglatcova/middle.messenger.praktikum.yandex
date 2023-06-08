@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { Block } from "../../../../../../../../services";
 import { Popup } from "../../../../../../../../components";
 import { isEqual } from "../../../../../../../../helpers";

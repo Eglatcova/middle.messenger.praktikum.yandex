@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { BaseBlockProps } from "../../../../../../services/types";
 
 export interface MessagesHeaderConnectedProps {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { Chat, Messages } from "./components";
 import { ButtonBase, Link, Popup } from "../../components";
 import { Routes } from "../../constants";

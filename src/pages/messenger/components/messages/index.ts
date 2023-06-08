@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { isEqual } from "../../../../helpers";
 import { Block, Connect } from "../../../../services";
 import { MessageItem, State } from "../../../../services/Store/types";

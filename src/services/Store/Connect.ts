@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
-/* eslint-disable operator-linebreak */
 import { Block } from "../Block";
 import { BaseBlockProps } from "../types";
 import { Store } from "./Store";

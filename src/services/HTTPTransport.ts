@@ -86,14 +86,17 @@ class HTTPTransport {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      xhr.setRequestHeader("Content-Type", "application/json");
-
       xhr.withCredentials = true;
       xhr.responseType = "json";
 
       if (method === METHODS.GET || !data) {
         xhr.send();
+      } else if (data instanceof FormData) {
+        console.log("tut");
+
+        xhr.send(data);
       } else {
+        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
       }
     });

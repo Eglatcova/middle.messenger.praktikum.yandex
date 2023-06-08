@@ -1,18 +1,17 @@
-import { Block } from "../../services";
-import { BaseBlockProps } from "../../services/types";
+import { Block } from "../../../../services";
+import { BaseBlockProps } from "../../../../services/types";
 import { Form } from "./components";
 import template from "./popup.hbs";
 
 interface PopupProps extends BaseBlockProps {
-  label: string;
   inputLabel: string;
-  onSubmit: (login: string) => void;
   onClose: () => void;
 }
 
 class Popup extends Block<PopupProps> {
   constructor(props: PopupProps) {
-    const WRAPPER_CLASSNAME = "popup_wrapper";
+    const WRAPPER_CLASSNAME = "avatar_popup-wrapper";
+
     props.classNames = [WRAPPER_CLASSNAME];
     props.events = {
       click: (e) => {
@@ -28,7 +27,7 @@ class Popup extends Block<PopupProps> {
   protected init(): void {
     this.children.form = new Form({
       label: this.props.inputLabel,
-      onSubmit: this.props.onSubmit,
+      onClose: this.props.onClose,
     });
   }
 

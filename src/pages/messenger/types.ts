@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { ChatItem } from "../../services/Store/types";
 import { BaseBlockProps } from "../../services/types";
 

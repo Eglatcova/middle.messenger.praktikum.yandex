@@ -20,6 +20,7 @@ class ProfilePage extends Block<ProfileConnectedProps> {
   init() {
     this.children.avatar = new Avatar({
       icon: fileIcon,
+      avatar: this.props.avatar,
     });
 
     this.children.title = new Title({
@@ -50,6 +51,15 @@ class ProfilePage extends Block<ProfileConnectedProps> {
     this.children.itemTelephone = new SettingsItem({
       label: "Телефон",
       value: this.props.phone,
+    });
+
+    this.children.linkToMessenger = new Link({
+      label: "Перейти в чат",
+      events: {
+        click: () => {
+          Router.go(Routes.MESSENGER);
+        },
+      },
     });
 
     this.children.linkToProfileSettings = new Link({

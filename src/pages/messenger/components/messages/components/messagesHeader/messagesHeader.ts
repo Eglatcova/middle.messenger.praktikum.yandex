@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import dotsIcon from "../../../../../../../static/icons/dots.svg";
 import { isEqual } from "../../../../../../helpers";
 import { Block } from "../../../../../../services";

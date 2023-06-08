@@ -10,7 +10,7 @@ interface FieldProps extends BaseBlockProps {
   name: string;
   placeholder: string;
   required?: boolean;
-  errorMessage: string;
+  errorMessage?: string;
   pattern?: string;
 }
 
