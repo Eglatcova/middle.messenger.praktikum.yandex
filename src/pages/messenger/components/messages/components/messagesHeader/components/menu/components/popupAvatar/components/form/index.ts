@@ -1,6 +1,6 @@
-import { chatController } from "../../../../controllers";
-import { Block } from "../../../../services";
-import { ButtonBase } from "../../../buttonBase";
+import { ButtonBase } from "../../../../../../../../../../../../components";
+import { chatController } from "../../../../../../../../../../../../controllers";
+import { Block } from "../../../../../../../../../../../../services";
 import template from "./form.hbs";
 
 interface FormProps {

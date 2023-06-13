@@ -1,9 +1,9 @@
-import { Block } from "../../services";
+import { Block } from "../../../../../../../../../../services";
 import { Form } from "./components";
 import { PopupProps } from "./types";
-import template from "./popupSave.hbs";
+import template from "./PopupAvatar.hbs";
 
-class PopupSave extends Block<PopupProps> {
+class PopupAvatar extends Block<PopupProps> {
   constructor(props: PopupProps) {
     const WRAPPER_CLASSNAME = "avatar_popup-wrapper";
 
@@ -32,4 +32,4 @@ class PopupSave extends Block<PopupProps> {
   }
 }
 
-export { PopupSave };
+export { PopupAvatar };

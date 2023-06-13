@@ -23,8 +23,6 @@ class Avatar extends Block<AvatarProps> {
       ...incomingProps,
     };
 
-    console.log("incomingProps", incomingProps);
-
     super("div", props);
   }
 

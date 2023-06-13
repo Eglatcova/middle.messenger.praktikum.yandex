@@ -1,6 +1,6 @@
 /* eslint-disable operator-linebreak */
 import { Block } from "../../../../../../../../services";
-import { Popup, PopupSave } from "../../../../../../../../components";
+import { Popup } from "../../../../../../../../components";
 import { isEqual } from "../../../../../../../../helpers";
 import { chatController } from "../../../../../../../../controllers/ChatController";
 import { IncomingMenuProps, MenuProps, POPUP_STATE } from "./types";
@@ -10,7 +10,7 @@ import {
   setCurrentChat,
 } from "../../../../../../../../services/Store/Actions";
 import { PopupProps } from "../../../../../../../../components/popup/types";
-import { Button } from "./components";
+import { Button, PopupAvatar } from "./components";
 import plus from "./icons/plus.svg";
 import close from "./icons/close.svg";
 import template from "./menu.hbs";
@@ -48,7 +48,7 @@ class Menu extends Block<MenuProps> {
     });
 
     this.children.buttonAddAvatar = new Button({
-      icon: close,
+      icon: plus,
       label: "Добавить аватар чата",
       onClick: () => {
         this.setProps({
@@ -114,7 +114,7 @@ class Menu extends Block<MenuProps> {
 
     this.children.popupAddAvatar =
       popupState === POPUP_STATE.ADD_AVATAR
-        ? new PopupSave({
+        ? new PopupAvatar({
             inputLabel: "Логин",
             chatID: this.props.id,
             onClose,
