@@ -1,4 +1,4 @@
 import { Button } from "./button";
-import { PopupAvatar } from "./popupAvatar";
+import { PopupSaveAvatar } from "./popupSaveAvatar";
 
-export { Button, PopupAvatar };
+export { Button, PopupSaveAvatar };

@@ -10,7 +10,7 @@ import {
   setCurrentChat,
 } from "../../../../../../../../services/Store/Actions";
 import { PopupProps } from "../../../../../../../../components/popup/types";
-import { Button, PopupAvatar } from "./components";
+import { Button, PopupSaveAvatar } from "./components";
 import plus from "./icons/plus.svg";
 import close from "./icons/close.svg";
 import template from "./menu.hbs";
@@ -114,7 +114,7 @@ class Menu extends Block<MenuProps> {
 
     this.children.popupAddAvatar =
       popupState === POPUP_STATE.ADD_AVATAR
-        ? new PopupAvatar({
+        ? new PopupSaveAvatar({
             inputLabel: "Логин",
             chatID: this.props.id,
             onClose,
