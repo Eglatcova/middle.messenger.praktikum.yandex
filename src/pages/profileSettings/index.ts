@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Avatar } from "../../components";
 import { Block, Connect } from "../../services";
 import template from "./profileSettings.hbs";
@@ -50,8 +52,6 @@ class ProfileSettingsPage extends Block<ProfileSettingsConnectedProps> {
     oldProps: ProfileSettingsConnectedProps,
     newProps: ProfileSettingsConnectedProps
   ): boolean {
-    console.log("oldProps", oldProps.avatar, newProps.avatar);
-
     if (oldProps.avatar !== newProps.avatar) {
       this.children.avatar = new Avatar({
         avatar: newProps.avatar,

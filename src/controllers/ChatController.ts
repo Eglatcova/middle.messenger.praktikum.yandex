@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-
 import { ChatAPI, UserAPI } from "../api";
 import {
   ChatToken,
@@ -86,6 +85,30 @@ export class ChatController {
     }
   }
 
+  async updateAvatar(data: FormData) {
+    try {
+      const chatData = await this.api.updateAvatar(data);
+
+      const currentChats = Store.getState().chat.chats;
+
+      if (currentChats !== null) {
+        const newChats = currentChats.map((item) => {
+          if (item.id === chatData.id) {
+            return {
+              ...item,
+              avatar: chatData.avatar,
+            };
+          }
+          return item;
+        });
+
+        Store.set("chat.chats", [...newChats]);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   async connect(params: ChatConnectParams) {
     const { chatID, token } = params;
     const userID = Store.getState().user.data.id;
@@ -111,7 +134,14 @@ export class ChatController {
 
       socket.send(
         JSON.stringify({
-          content: "В сети",
+          content: "0",
+          type: "get old",
+        })
+      );
+
+      socket.send(
+        JSON.stringify({
+          content: "",
           type: "message",
         })
       );
@@ -132,21 +162,31 @@ export class ChatController {
       const message = JSON.parse(event.data);
       const { messages, currentChat } = Store.getState().chat;
 
-      const userAPI = new UserAPI();
-      const userData = await userAPI.searchUserByID(message.user_id);
+      const incomingMessages = Array.isArray(message)
+        ? message.reverse()
+        : [message];
 
-      if (message.content === PING_MESSAGE || currentChat === null) return;
+      if (message.type === "user connected") return;
 
-      const currentMessages = messages[currentChat.id] || [];
-      Store.set("chat.messages", {
-        [currentChat.id]: [
-          ...currentMessages,
-          {
-            userName: userData.login,
-            content: message.content,
-            time: message.time,
-          },
-        ],
+      incomingMessages.forEach(async (incomingMessage) => {
+        const userAPI = new UserAPI();
+        const userData = await userAPI.searchUserByID(incomingMessage.user_id);
+
+        if (incomingMessage.content === PING_MESSAGE || currentChat === null) {
+          return;
+        }
+
+        const currentMessages = messages[currentChat.id] || [];
+        Store.set("chat.messages", {
+          [currentChat.id]: [
+            ...currentMessages,
+            {
+              userName: userData.login,
+              content: incomingMessage.content,
+              time: incomingMessage.time,
+            },
+          ],
+        });
       });
     });
 

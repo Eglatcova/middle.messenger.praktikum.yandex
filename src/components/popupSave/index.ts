@@ -1,11 +1,12 @@
 import { Block } from "../../services";
 import { Form } from "./components";
-import template from "./popup.hbs";
 import { PopupProps } from "./types";
+import template from "./popupSave.hbs";
 
-class Popup extends Block<PopupProps> {
+class PopupSave extends Block<PopupProps> {
   constructor(props: PopupProps) {
-    const WRAPPER_CLASSNAME = "popup_wrapper";
+    const WRAPPER_CLASSNAME = "avatar_popup-wrapper";
+
     props.classNames = [WRAPPER_CLASSNAME];
     props.events = {
       click: (e) => {
@@ -20,8 +21,9 @@ class Popup extends Block<PopupProps> {
 
   protected init(): void {
     this.children.form = new Form({
+      chatID: this.props.chatID,
       label: this.props.inputLabel,
-      onSubmit: this.props.onSubmit,
+      onClose: this.props.onClose,
     });
   }
 
@@ -30,4 +32,4 @@ class Popup extends Block<PopupProps> {
   }
 }
 
-export { Popup };
+export { PopupSave };

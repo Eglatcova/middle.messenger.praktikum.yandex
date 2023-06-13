@@ -7,6 +7,7 @@ import { SettingsField } from "./settingsField";
 import { SettingsItem } from "./settingsItem";
 import { Title } from "./title";
 import { Popup } from "./popup";
+import { PopupSave } from "./popupSave";
 
 export {
   Avatar,
@@ -18,4 +19,5 @@ export {
   SettingsItem,
   Title,
   Popup,
+  PopupSave,
 };

@@ -2,6 +2,7 @@
 export enum POPUP_STATE {
   ADD_USER = "ADD_USER",
   DELETE_USER = "DELETE_USER",
+  ADD_AVATAR = "ADD_AVATAR",
 }
 
 export interface IncomingMenuProps {

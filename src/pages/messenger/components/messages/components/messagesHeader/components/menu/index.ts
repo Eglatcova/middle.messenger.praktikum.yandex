@@ -1,17 +1,19 @@
+/* eslint-disable operator-linebreak */
 import { Block } from "../../../../../../../../services";
-import { Popup } from "../../../../../../../../components";
+import { Popup, PopupSave } from "../../../../../../../../components";
 import { isEqual } from "../../../../../../../../helpers";
 import { chatController } from "../../../../../../../../controllers/ChatController";
-import { Button } from "./components";
-import plus from "./icons/plus.svg";
-import close from "./icons/close.svg";
-import template from "./menu.hbs";
 import { IncomingMenuProps, MenuProps, POPUP_STATE } from "./types";
 import {
   getCurrentChat,
   getUserData,
   setCurrentChat,
 } from "../../../../../../../../services/Store/Actions";
+import { PopupProps } from "../../../../../../../../components/popup/types";
+import { Button } from "./components";
+import plus from "./icons/plus.svg";
+import close from "./icons/close.svg";
+import template from "./menu.hbs";
 
 class Menu extends Block<MenuProps> {
   constructor(incomingProps: IncomingMenuProps) {
@@ -45,6 +47,16 @@ class Menu extends Block<MenuProps> {
       },
     });
 
+    this.children.buttonAddAvatar = new Button({
+      icon: close,
+      label: "Добавить аватар чата",
+      onClick: () => {
+        this.setProps({
+          popupState: POPUP_STATE.ADD_AVATAR,
+        });
+      },
+    });
+
     const currentChat = getCurrentChat();
     const userData = getUserData();
     const currentChatID = currentChat === null ? null : currentChat.created_by;
@@ -72,7 +84,7 @@ class Menu extends Block<MenuProps> {
       });
     };
 
-    const popupStates = {
+    const popupStates: Record<string, PopupProps> = {
       [POPUP_STATE.ADD_USER]: {
         label: "Добавить пользователя",
         inputLabel: "Логин",
@@ -95,9 +107,19 @@ class Menu extends Block<MenuProps> {
 
     const { popupState } = this.props;
 
-    this.children.popup = popupState
-      ? new Popup(popupStates[popupState])
-      : null;
+    this.children.popup =
+      popupState && popupState !== POPUP_STATE.ADD_AVATAR
+        ? new Popup(popupStates[popupState])
+        : null;
+
+    this.children.popupAddAvatar =
+      popupState === POPUP_STATE.ADD_AVATAR
+        ? new PopupSave({
+            inputLabel: "Логин",
+            chatID: this.props.id,
+            onClose,
+          })
+        : null;
 
     return !isEqual(oldProps, newProps);
   }

@@ -37,6 +37,10 @@ class ChatAPI {
   getChatToken(data: GetChatToken) {
     return this.http.post<ChatToken>(`/token/${data.id}`);
   }
+
+  updateAvatar(data: FormData) {
+    return this.http.put<BackendChatItem>(`/avatar`, data);
+  }
 }
 
 export { ChatAPI };
