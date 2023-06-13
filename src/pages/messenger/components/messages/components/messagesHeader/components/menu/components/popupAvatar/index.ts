@@ -1,11 +1,11 @@
 import { Block } from "../../../../../../../../../../services";
 import { Form } from "./components";
 import { PopupProps } from "./types";
-import template from "./PopupAvatar.hbs";
+import template from "./popupAvatar.hbs";
 
 class PopupAvatar extends Block<PopupProps> {
   constructor(props: PopupProps) {
-    const WRAPPER_CLASSNAME = "avatar_popup-wrapper";
+    const WRAPPER_CLASSNAME = "popup-avatar_wrapper";
 
     props.classNames = [WRAPPER_CLASSNAME];
     props.events = {
