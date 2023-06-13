@@ -30,6 +30,7 @@ class Form extends Block<FormProps> {
 
           if (file === undefined) {
             alert("Файл не выбран");
+            return;
           }
 
           const form = new FormData();
