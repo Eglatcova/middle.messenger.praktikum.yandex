@@ -1,8 +1,10 @@
-import { Block } from "../../../../utils";
+import { Block } from "../../../../services";
+import { BaseBlockProps } from "../../../../services/types";
 import { Field, Title, ButtonBase } from "../../../../components";
 import template from "./form.hbs";
 import { Patterns, ValidationErrors } from "../../../../constants";
-import { BaseBlockProps } from "../../../../utils/types";
+import { authController } from "../../../../controllers";
+import { SignupData } from "../../../../api/AuthAPI";
 
 class Form extends Block {
   constructor() {
@@ -20,7 +22,7 @@ class Form extends Block {
           let passwordFirstVariant: null | string = null;
 
           const values = Array.from(formElements).reduce(
-            (acc: Record<string, string>, item: HTMLElement) => {
+            (acc, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
               const { name, value, validity } = item as HTMLInputElement;
@@ -38,16 +40,15 @@ class Form extends Block {
 
               return { ...acc, [name]: value };
             },
-            {}
+            {} as SignupData
           );
 
           if (isFormValid) {
+            authController.signup(values);
             alert("Данные отправлены");
           } else {
             alert("Поля формы заполнены неправильно");
           }
-
-          console.log(values);
         },
       },
     };
@@ -97,7 +98,7 @@ class Form extends Block {
       id: "surname",
       label: "Фамилия",
       type: "text",
-      name: "surname",
+      name: "second_name",
       placeholder: "Введите фамилию",
       pattern: Patterns.NAME,
       errorMessage: ValidationErrors.SURNAME,
@@ -108,7 +109,7 @@ class Form extends Block {
       id: "tel",
       label: "Телефон",
       type: "tel",
-      name: "tel",
+      name: "phone",
       placeholder: "Введите телефон",
       pattern: Patterns.PHONE,
       errorMessage: ValidationErrors.PHONE,

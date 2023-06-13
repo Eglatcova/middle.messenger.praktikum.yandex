@@ -1,3 +1,5 @@
-import { goTo } from "./goTo";
+import { set } from "./set";
+import { merge } from "./merge";
+import { isEqual } from "./isEqual";
 
-export { goTo };
+export { set, merge, isEqual };

@@ -1,5 +1,5 @@
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Block } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import { Input } from "./components";
 import template from "./field.hbs";
 
@@ -10,7 +10,7 @@ interface FieldProps extends BaseBlockProps {
   name: string;
   placeholder: string;
   required?: boolean;
-  errorMessage: string;
+  errorMessage?: string;
   pattern?: string;
 }
 

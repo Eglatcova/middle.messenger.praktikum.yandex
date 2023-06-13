@@ -1,6 +1,7 @@
 import { Link } from "../../components";
-import { goTo } from "../../helpers";
-import { Block } from "../../utils";
+import { Routes } from "../../constants";
+import { Block, Router } from "../../services";
+
 import template from "./navigation.hbs";
 
 class Navigation extends Block {
@@ -13,7 +14,7 @@ class Navigation extends Block {
       label: "Чат",
       events: {
         click: () => {
-          goTo("chat");
+          Router.go(Routes.CHAT);
         },
       },
     });
@@ -22,7 +23,7 @@ class Navigation extends Block {
       label: "Ошибка 404",
       events: {
         click: () => {
-          goTo("error404");
+          Router.go(Routes.ERROR_404);
         },
       },
     });
@@ -31,7 +32,7 @@ class Navigation extends Block {
       label: "Ошибка 505",
       events: {
         click: () => {
-          goTo("error500");
+          Router.go(Routes.ERROR_500);
         },
       },
     });
@@ -40,7 +41,7 @@ class Navigation extends Block {
       label: "Авторизация",
       events: {
         click: () => {
-          goTo("login");
+          Router.go(Routes.LOGIN);
         },
       },
     });
@@ -49,7 +50,7 @@ class Navigation extends Block {
       label: "Настройки пароля",
       events: {
         click: () => {
-          goTo("passwordSettings");
+          Router.go(Routes.PROFILE_SETTIGS);
         },
       },
     });
@@ -58,7 +59,7 @@ class Navigation extends Block {
       label: "Профиль",
       events: {
         click: () => {
-          goTo("profile");
+          Router.go(Routes.PROFILE);
         },
       },
     });
@@ -67,7 +68,7 @@ class Navigation extends Block {
       label: "Настройки профиля",
       events: {
         click: () => {
-          goTo("profileSettings");
+          Router.go(Routes.PROFILE_SETTIGS);
         },
       },
     });
@@ -76,7 +77,7 @@ class Navigation extends Block {
       label: "Регистрация",
       events: {
         click: () => {
-          goTo("registration");
+          Router.go(Routes.REGISTRATION);
         },
       },
     });

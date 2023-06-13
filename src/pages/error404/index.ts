@@ -1,7 +1,7 @@
 import { Link, ErrorBanner } from "../../components";
-import { goTo } from "../../helpers";
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Routes } from "../../constants";
+import { Block, Router } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import template from "./error404.hbs";
 
 class Error404 extends Block {
@@ -23,7 +23,7 @@ class Error404 extends Block {
       label: "Назад к чатам",
       events: {
         click: () => {
-          goTo("chat");
+          Router.go(Routes.PROFILE);
         },
       },
     });

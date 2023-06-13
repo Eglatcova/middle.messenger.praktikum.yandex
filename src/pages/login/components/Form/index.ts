@@ -1,12 +1,15 @@
-import { Block } from "../../../../utils";
+import { Block } from "../../../../services";
+import { BaseBlockProps } from "../../../../services/types";
 import template from "./form.hbs";
 import { Patterns, ValidationErrors } from "../../../../constants";
 import { ButtonBase, Field } from "../../../../components";
-import { BaseBlockProps } from "../../../../utils/types";
+import { authController } from "../../../../controllers";
+import { SigninData } from "../../../../api/AuthAPI";
 
 class Form extends Block {
   constructor() {
     const props: BaseBlockProps = {
+      tagName: "form",
       classNames: ["login_form"],
       attributes: {
         novalidate: true,
@@ -19,7 +22,7 @@ class Form extends Block {
           let isFormValid = true;
 
           const values = Array.from(formElement).reduce(
-            (acc: Record<string, string>, item: HTMLElement) => {
+            (acc, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
               const { name, value, validity } = item as HTMLInputElement;
@@ -28,16 +31,15 @@ class Form extends Block {
               }
               return { ...acc, [name]: value };
             },
-            {}
+            {} as SigninData
           );
 
           if (isFormValid) {
+            authController.signin(values);
             alert("Данные отправлены");
           } else {
             alert("Поля формы заполнены неправильно");
           }
-
-          console.log(values);
         },
       },
     };

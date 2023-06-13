@@ -1,9 +1,28 @@
+@import "./components/button/button.pcss";
+@import "./components/popup/popup.pcss";
+
 .avatar-wrapper {
+  position: relative;
   width: 130px;
   min-height: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--greyLight);
   border-radius: 100%;
+  overflow: hidden;
+}
+
+.avatar_text {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.avatar_img {
+  position: absolute;
+  width: 130px;
 }
