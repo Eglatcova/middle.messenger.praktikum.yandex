@@ -17,6 +17,7 @@ class PasswordSettings extends Block {
   init() {
     this.children.avatar = new Avatar({
       icon: fileIcon,
+      avatar: null,
     });
 
     this.children.form = new Form();

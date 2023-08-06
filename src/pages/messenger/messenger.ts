@@ -86,6 +86,7 @@ class MessengerView extends Block<MessengerProps> {
 
       return new Chat({
         isActive: chatItem.id === currentChatID,
+        isPopupOpen: false,
         ...chatItem,
       });
     });

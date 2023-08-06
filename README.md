@@ -6,6 +6,8 @@ npm run build - сборка и раздача статики
 
 npm run build-netlify - сборка для netlify
 
-в проекте используются: ESLint, Stylelint, TS
+npm test - запуск тестов
+
+в проекте используются: ESLint, Stylelint, TS, Mocha
 
 домен Netlify - https://lively-cobbler-c00190.netlify.app/
