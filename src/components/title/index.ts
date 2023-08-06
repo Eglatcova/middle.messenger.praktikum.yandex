@@ -1,5 +1,5 @@
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Block } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import template from "./title.hbs";
 
 interface TitleProps extends BaseBlockProps {

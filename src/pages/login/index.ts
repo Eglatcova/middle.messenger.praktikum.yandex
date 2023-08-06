@@ -1,13 +1,12 @@
 import { Title, Link } from "../../components";
-import { goTo } from "../../helpers";
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Routes } from "../../constants";
+import { Block, Router } from "../../services";
 import { Form } from "./components";
 import template from "./login.hbs";
 
 class Login extends Block {
   constructor() {
-    const props: BaseBlockProps = {
+    const props = {
       classNames: ["page-wrapper"],
     };
 
@@ -25,7 +24,7 @@ class Login extends Block {
       label: "Нет аккаунта?",
       events: {
         click: () => {
-          goTo("registration");
+          Router.go(Routes.REGISTRATION);
         },
       },
     });

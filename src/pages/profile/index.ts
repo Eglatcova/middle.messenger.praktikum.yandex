@@ -1,14 +1,17 @@
 import { Avatar, SettingsItem, Link, Title } from "../../components";
-import { Block } from "../../utils";
+import { Block, Connect, Router } from "../../services";
 import template from "./profile.hbs";
 import fileIcon from "../../../static/icons/file.svg";
-import { goTo } from "../../helpers";
-import { BaseBlockProps } from "../../utils/types";
+import { Routes } from "../../constants";
+import { authController } from "../../controllers";
+import { ProfileConnectedProps } from "./types";
+import { State } from "../../services/Store/types";
 
-class Profile extends Block {
-  constructor() {
-    const props: BaseBlockProps = {
+class ProfilePage extends Block<ProfileConnectedProps> {
+  constructor(_: string, user: ProfileConnectedProps) {
+    const props = {
       classNames: ["page-wrapper"],
+      ...user,
     };
 
     super("main", props);
@@ -17,43 +20,53 @@ class Profile extends Block {
   init() {
     this.children.avatar = new Avatar({
       icon: fileIcon,
+      avatar: this.props.avatar,
     });
 
     this.children.title = new Title({
-      label: "Иван",
+      label: this.props.first_name,
       classNames: ["profile_name"],
     });
 
     this.children.itemEmail = new SettingsItem({
       label: "Почта",
-      value: "pochta@yandex.ru",
+      value: this.props.email,
     });
 
     this.children.itemLogin = new SettingsItem({
       label: "Логин",
-      value: "ivanivanov",
+      value: this.props.login,
     });
 
     this.children.itemName = new SettingsItem({
       label: "Имя",
-      value: "Иван",
+      value: this.props.first_name,
     });
 
     this.children.itemSurname = new SettingsItem({
       label: "Фамилия",
-      value: "Иванов",
+      value: this.props.second_name,
     });
 
     this.children.itemTelephone = new SettingsItem({
       label: "Телефон",
-      value: "+7 (909) 967 30 30",
+      value: this.props.phone,
+    });
+
+    this.children.linkToMessenger = new Link({
+      label: "Перейти в чат",
+      events: {
+        click: () => {
+          Router.go(Routes.MESSENGER);
+        },
+      },
     });
 
     this.children.linkToProfileSettings = new Link({
       label: "Изменить данные",
       events: {
         click: () => {
-          goTo("profileSettings");
+          Router.go(Routes.PROFILE_SETTIGS);
         },
       },
     });
@@ -62,7 +75,7 @@ class Profile extends Block {
       label: "Изменить пароль",
       events: {
         click: () => {
-          goTo("passwordSettings");
+          Router.go(Routes.PASSWORD_SETTINGS);
         },
       },
     });
@@ -71,7 +84,7 @@ class Profile extends Block {
       label: "Выйти",
       events: {
         click: () => {
-          console.log("выход");
+          authController.logout();
         },
       },
     });
@@ -81,5 +94,9 @@ class Profile extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const getUserData = (state: State) => state.user.data;
+
+const Profile = Connect<ProfileConnectedProps>(getUserData)(ProfilePage);
 
 export { Profile };

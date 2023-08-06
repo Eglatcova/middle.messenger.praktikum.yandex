@@ -1,5 +1,5 @@
-import { Block } from "../../utils";
-import { BaseBlockProps } from "../../utils/types";
+import { Block } from "../../services";
+import { BaseBlockProps } from "../../services/types";
 import { SettingsInput } from "./components";
 import template from "./settingsField.hbs";
 

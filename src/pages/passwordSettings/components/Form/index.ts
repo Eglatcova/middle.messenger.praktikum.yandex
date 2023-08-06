@@ -1,8 +1,9 @@
-import { Block } from "../../../../utils";
+import { Block } from "../../../../services";
+import { BaseBlockProps } from "../../../../services/types";
 import { ButtonBase, SettingsField } from "../../../../components";
 import template from "./form.hbs";
 import { Patterns, ValidationErrors } from "../../../../constants";
-import { BaseBlockProps } from "../../../../utils/types";
+import { userController } from "../../../../controllers";
 
 class Form extends Block {
   constructor() {
@@ -23,15 +24,14 @@ class Form extends Block {
             (acc: Record<string, string>, item: HTMLElement) => {
               if (item.tagName !== "INPUT") return acc;
 
-              const { id, name, value, validity } = item as HTMLInputElement;
+              const { name, value, validity } = item as HTMLInputElement;
               if (!validity.valid) {
                 isFormValid = false;
               }
 
-              const isValueOfNewPassord =
-                name === "password" && id !== "old_password";
+              const isNewPassord = name === "newPassword";
 
-              if (isValueOfNewPassord) {
+              if (isNewPassord) {
                 if (passwordFirstVariant === null) {
                   passwordFirstVariant = value;
                 } else if (passwordFirstVariant !== value) {
@@ -45,12 +45,14 @@ class Form extends Block {
           );
 
           if (isFormValid) {
+            userController.cheangePassword({
+              oldPassword: values.oldPassword,
+              newPassword: values.newPassword,
+            });
             alert("Данные отправлены");
           } else {
             alert("Поля формы заполнены неправильно");
           }
-
-          console.log(values);
         },
       },
     };
@@ -63,7 +65,7 @@ class Form extends Block {
       id: "old_password",
       label: "Старый пароль",
       type: "password",
-      name: "password",
+      name: "oldPassword",
       pattern: Patterns.PASSWORD,
       errorMessage: ValidationErrors.PASSWORD,
       required: true,
@@ -73,7 +75,7 @@ class Form extends Block {
       id: "password_step_1",
       label: "Новый пароль",
       type: "password",
-      name: "password",
+      name: "newPassword",
       pattern: Patterns.PASSWORD,
       errorMessage: ValidationErrors.PASSWORD,
       required: true,
@@ -83,7 +85,7 @@ class Form extends Block {
       id: "password_step_2",
       label: "Повторите новый пароль",
       type: "password",
-      name: "password",
+      name: "newPassword",
       pattern: Patterns.PASSWORD,
       errorMessage: ValidationErrors.PASSWORD,
       required: true,
