@@ -25,7 +25,7 @@ class Route {
   private block: Block | null = null;
 
   constructor(
-    private pathname: string,
+    public pathname: string,
     private readonly BlockClass: typeof Block<BaseBlockProps>,
     private readonly query: string
   ) {}
@@ -60,9 +60,11 @@ class Route {
 class Router {
   private static instance: Router;
   private routes: Route[] = [];
-  private currentRoute: Route | null = null;
-  private history = window.history;
+
   private rootQuery: string;
+
+  public currentRoute: Route | null = null;
+  public history = window.history;
 
   public constructor(rootQuery: string) {
     if (Router.instance) {
@@ -126,4 +128,4 @@ class Router {
 
 const RouterSingletone = new Router("#app");
 
-export { RouterSingletone as Router };
+export { RouterSingletone as Router, Route };

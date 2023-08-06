@@ -133,7 +133,7 @@ class Block<Props extends BaseBlockProps = {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+  protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
 

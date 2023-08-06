@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 import { UserAPI } from "../api";
 import { ChangePasswordData, ChangeProfileData } from "../api/UserAPI/types";
