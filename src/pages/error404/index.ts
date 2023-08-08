@@ -2,7 +2,7 @@ import { Link, ErrorBanner } from "../../components";
 import { Routes } from "../../constants";
 import { Block, Router } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./error404.hbs";
+import { template } from "./error404.tmpl";
 
 class Error404 extends Block {
   constructor() {

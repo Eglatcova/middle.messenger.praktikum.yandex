@@ -1,6 +1,6 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./errorBanner.hbs";
+import { template } from "./errorBanner.tmpl";
 
 interface ErrorBannerProps extends BaseBlockProps {
   code: string;

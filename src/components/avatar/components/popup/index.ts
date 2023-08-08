@@ -1,7 +1,7 @@
 import { Block } from "../../../../services";
 import { BaseBlockProps } from "../../../../services/types";
 import { Form } from "./components";
-import template from "./popup.hbs";
+import { template } from "./popup.tmpl";
 
 interface PopupProps extends BaseBlockProps {
   inputLabel: string;

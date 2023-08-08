@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Avatar } from "../../components";
 import { Block, Connect } from "../../services";
-import template from "./profileSettings.hbs";
 import fileIcon from "../../../static/icons/file.svg";
 import { Form } from "./components";
 import { ProfileSettingsConnectedProps } from "./types";
 import { State } from "../../services/Store/types";
 import { isEqual } from "../../helpers";
+import { template } from "./profileSettings.tmpl";
 
 class ProfileSettingsPage extends Block<ProfileSettingsConnectedProps> {
   constructor(_: string, connectedProps: ProfileSettingsConnectedProps) {

@@ -1,9 +1,9 @@
 import { Avatar, ButtonBase } from "../../components";
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./passwordSettings.hbs";
 import fileIcon from "../../../static/icons/file.svg";
 import { Form } from "./components";
+import { template } from "./passwordSettings.tmpl";
 
 class PasswordSettings extends Block {
   constructor() {

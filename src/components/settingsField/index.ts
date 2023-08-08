@@ -1,7 +1,7 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
 import { SettingsInput } from "./components";
-import template from "./settingsField.hbs";
+import { template } from "./settingsField.tmpl";
 
 interface SettingsFieldProps extends BaseBlockProps {
   id: string;

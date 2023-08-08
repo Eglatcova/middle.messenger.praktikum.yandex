@@ -1,6 +1,6 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./link.hbs";
+import { template } from "./link.tmpl";
 
 interface LinkProps extends BaseBlockProps {
   label: string;

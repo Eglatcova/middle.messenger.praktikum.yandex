@@ -1,7 +1,7 @@
 import { ButtonBase } from "../../../../../../../../../../../../components";
 import { chatController } from "../../../../../../../../../../../../controllers";
 import { Block } from "../../../../../../../../../../../../services";
-import template from "./form.hbs";
+import { template } from "./form.tmpl";
 
 interface FormProps {
   chatID: number;

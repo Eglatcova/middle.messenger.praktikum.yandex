@@ -1,0 +1,9 @@
+export const template = `{{{messagesHeader}}}
+<div class="messages-block">
+  {{#each messages}}
+    <div data-id="message_{{@index}}"></div>
+  {{/each}}
+</div>
+<div class="messages-form-wrapper">
+  {{{form}}}
+</div>`;

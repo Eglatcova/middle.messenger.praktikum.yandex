@@ -1,6 +1,6 @@
 import { Block } from "../../../../../../services";
 import arrowBigIcon from "../../../../../../../static/icons/arrowBig.svg";
-import template from "./form.hbs";
+import { template } from "./form.tmpl";
 import {
   getCurrentChat,
   getSockets,

@@ -2,7 +2,7 @@ import { Title, Link } from "../../components";
 import { Routes } from "../../constants";
 import { Block, Router } from "../../services";
 import { Form } from "./components";
-import template from "./login.hbs";
+import { template } from "./login.tmpl";
 
 class Login extends Block {
   constructor() {

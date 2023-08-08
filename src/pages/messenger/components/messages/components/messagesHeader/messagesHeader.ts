@@ -2,8 +2,8 @@ import dotsIcon from "../../../../../../../static/icons/dots.svg";
 import { isEqual } from "../../../../../../helpers";
 import { Block } from "../../../../../../services";
 import { Toggler, Menu } from "./components";
-import template from "./messagesHeader.hbs";
 import { MessagesHeaderConnectedProps, MessagesHeaderProps } from "./types";
+import { template } from "./messagesHeader.tmpl";
 
 class MessagesHeaderView extends Block<MessagesHeaderProps> {
   constructor(_: string, connectedProps: MessagesHeaderConnectedProps) {

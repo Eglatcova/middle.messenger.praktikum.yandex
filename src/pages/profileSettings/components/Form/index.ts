@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Block } from "../../../../services";
 import { ButtonBase, SettingsField } from "../../../../components";
-import template from "./form.hbs";
+import { template } from "./form.tmpl";
 import { Patterns, ValidationErrors } from "../../../../constants";
 import { userController } from "../../../../controllers";
 import { FormProps, FormIncomingProps } from "./types";
