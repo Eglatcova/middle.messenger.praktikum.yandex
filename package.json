@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "handlebars": "4.7.7",
-    "nanoid": "3"
+    "nanoid": "3",
+    "webpack": "5.88.2"
   }
 }
