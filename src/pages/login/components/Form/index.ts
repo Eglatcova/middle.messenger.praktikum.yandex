@@ -1,10 +1,10 @@
 import { Block } from "../../../../services";
 import { BaseBlockProps } from "../../../../services/types";
-import template from "./form.hbs";
+import { template } from "./form.tmpl";
 import { Patterns, ValidationErrors } from "../../../../constants";
 import { ButtonBase, Field } from "../../../../components";
 import { authController } from "../../../../controllers";
-import { SigninData } from "../../../../api/AuthAPI";
+import { PostSigninData } from "../../../../api/AuthAPI/types";
 
 class Form extends Block {
   constructor() {
@@ -31,7 +31,7 @@ class Form extends Block {
               }
               return { ...acc, [name]: value };
             },
-            {} as SigninData
+            {} as PostSigninData
           );
 
           if (isFormValid) {

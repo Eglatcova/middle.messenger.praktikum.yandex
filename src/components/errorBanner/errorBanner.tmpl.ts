@@ -1,0 +1,2 @@
+export const template = `<h2 class="error-banner_code">{{code}}</h2>
+<p class="error-banner_text">{{text}}</p>`;

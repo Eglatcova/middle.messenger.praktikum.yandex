@@ -1,6 +1,6 @@
 import { Block } from "../../../../../../services";
 import { BaseBlockProps } from "../../../../../../services/types";
-import template from "./message.hbs";
+import { template } from "./message.tmpl";
 
 interface MessageProps extends BaseBlockProps {
   text: string;

@@ -1,9 +1,8 @@
 import { isEqual } from "../../helpers";
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-
-import template from "./avatar.hbs";
 import { Button, Popup } from "./components";
+import { template } from "./avatar.tmpl";
 
 interface IncomingAvatarProps extends BaseBlockProps {
   icon: string;

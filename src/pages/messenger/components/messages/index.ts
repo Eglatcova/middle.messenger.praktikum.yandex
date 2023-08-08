@@ -3,7 +3,7 @@ import { Block, Connect } from "../../../../services";
 import { MessageItem, State } from "../../../../services/Store/types";
 import { BaseBlockProps } from "../../../../services/types";
 import { Form, MessagesHeader, Message } from "./components";
-import template from "./messages.hbs";
+import { template } from "./messages.tmpl";
 
 interface MessagesConnectedProps {
   messages: MessageItem[];

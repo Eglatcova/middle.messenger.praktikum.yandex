@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import Handlebars from "handlebars";
 import { EventBus } from "./EventBus";
 import { BaseBlockProps } from "./types";
 
@@ -133,7 +134,7 @@ class Block<Props extends BaseBlockProps = {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+  protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
 
@@ -166,7 +167,7 @@ class Block<Props extends BaseBlockProps = {}> {
     return new DocumentFragment();
   }
 
-  protected compile(template: (context: any) => string, context: Props) {
+  protected compile(template: string, context: Props) {
     const contextAndStubs: Record<string, any> = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
@@ -176,7 +177,7 @@ class Block<Props extends BaseBlockProps = {}> {
       }
     });
 
-    const html = template(contextAndStubs);
+    const html = Handlebars.compile(template)(contextAndStubs);
     const temp = document.createElement("template");
     temp.innerHTML = html;
 

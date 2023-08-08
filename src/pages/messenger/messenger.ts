@@ -5,7 +5,7 @@ import { chatController } from "../../controllers/ChatController";
 import { Block, Router } from "../../services";
 import { MessengerConnectedProps, MessengerProps } from "./types";
 import { isEqual } from "../../helpers";
-import template from "./messenger.hbs";
+import { template } from "./messenger.tmpl";
 
 class MessengerView extends Block<MessengerProps> {
   constructor(_: string, connectedProps: MessengerConnectedProps) {
@@ -86,6 +86,7 @@ class MessengerView extends Block<MessengerProps> {
 
       return new Chat({
         isActive: chatItem.id === currentChatID,
+        isPopupOpen: false,
         ...chatItem,
       });
     });

@@ -1,11 +1,11 @@
 import { Avatar, SettingsItem, Link, Title } from "../../components";
 import { Block, Connect, Router } from "../../services";
-import template from "./profile.hbs";
 import fileIcon from "../../../static/icons/file.svg";
 import { Routes } from "../../constants";
 import { authController } from "../../controllers";
 import { ProfileConnectedProps } from "./types";
 import { State } from "../../services/Store/types";
+import { template } from "./profile.tmpl";
 
 class ProfilePage extends Block<ProfileConnectedProps> {
   constructor(_: string, user: ProfileConnectedProps) {

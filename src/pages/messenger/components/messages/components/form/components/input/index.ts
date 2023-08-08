@@ -1,5 +1,4 @@
 import { Block } from "../../../../../../../../services";
-import template from "./input.hbs";
 
 interface InputProps {
   classNames?: string[];
@@ -36,7 +35,7 @@ class Input extends Block<InputProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile("", { ...this.props });
   }
 }
 

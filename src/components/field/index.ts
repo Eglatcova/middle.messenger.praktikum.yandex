@@ -1,7 +1,7 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
 import { Input } from "./components";
-import template from "./field.hbs";
+import { template } from "./field.tmpl";
 
 interface FieldProps extends BaseBlockProps {
   id: string;

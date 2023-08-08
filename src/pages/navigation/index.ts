@@ -2,7 +2,7 @@ import { Link } from "../../components";
 import { Routes } from "../../constants";
 import { Block, Router } from "../../services";
 
-import template from "./navigation.hbs";
+import template from "./navigation.tmpl";
 
 class Navigation extends Block {
   constructor() {
@@ -14,7 +14,7 @@ class Navigation extends Block {
       label: "Чат",
       events: {
         click: () => {
-          Router.go(Routes.CHAT);
+          Router.go(Routes.MESSENGER);
         },
       },
     });
