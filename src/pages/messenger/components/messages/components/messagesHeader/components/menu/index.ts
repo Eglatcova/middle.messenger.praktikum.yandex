@@ -13,7 +13,7 @@ import { PopupProps } from "../../../../../../../../components/popup/types";
 import { Button, PopupSaveAvatar } from "./components";
 import plus from "./icons/plus.svg";
 import close from "./icons/close.svg";
-import template from "./menu.hbs";
+import { template } from "./menu.tmpl";
 
 class Menu extends Block<MenuProps> {
   constructor(incomingProps: IncomingMenuProps) {

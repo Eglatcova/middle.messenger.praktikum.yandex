@@ -1,6 +1,5 @@
 import { Block } from "../../../../services";
 import { BaseBlockProps } from "../../../../services/types";
-import template from "./settingsInput.hbs";
 
 interface SettingsInputProps extends BaseBlockProps {
   attributes: {
@@ -37,7 +36,7 @@ class SettingsInput extends Block<SettingsInputProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile("", { ...this.props });
   }
 }
 

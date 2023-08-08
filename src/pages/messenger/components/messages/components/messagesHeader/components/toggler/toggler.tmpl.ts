@@ -1,0 +1,1 @@
+export const template = `<svg width="4" height="16"><use href=#{{dotsIcon}}></use></svg>`;

@@ -2,7 +2,7 @@ import { Link, ErrorBanner } from "../../components";
 import { Routes } from "../../constants";
 import { Block, Router } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./error500.hbs";
+import { template } from "./error500.tmpl";
 
 class Error500 extends Block {
   constructor() {

@@ -1,0 +1,3 @@
+export const template = `<h4 class="chat_message-login">{{login}}</h4>
+{{text}}
+<span class="chat_message-time">{{time}}</span>`;

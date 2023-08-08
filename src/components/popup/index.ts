@@ -1,7 +1,7 @@
 import { Block } from "../../services";
 import { Form } from "./components";
-import template from "./popup.hbs";
 import { PopupProps } from "./types";
+import { template } from "./popup.tmpl";
 
 class Popup extends Block<PopupProps> {
   constructor(props: PopupProps) {

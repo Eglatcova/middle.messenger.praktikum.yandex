@@ -1,6 +1,6 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./title.hbs";
+import { template } from "./title.tmpl";
 
 interface TitleProps extends BaseBlockProps {
   label: string;

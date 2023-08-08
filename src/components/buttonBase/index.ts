@@ -1,6 +1,6 @@
 import { Block } from "../../services";
 import { BaseBlockProps } from "../../services/types";
-import template from "./buttonBase.hbs";
+import { template } from "./buttonBase.tmpl";
 
 interface ButtonBaseProps extends BaseBlockProps {
   label: string;

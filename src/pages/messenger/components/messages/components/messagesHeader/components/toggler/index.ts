@@ -1,7 +1,7 @@
 import { Block } from "../../../../../../../../services";
 import { BaseBlockProps } from "../../../../../../../../services/types";
 import dotsIcon from "../../../../../../../../../static/icons/dots.svg";
-import template from "./toggler.hbs";
+import { template } from "./toggler.tmpl";
 
 interface TogglerProps extends BaseBlockProps {
   onClick: () => void;

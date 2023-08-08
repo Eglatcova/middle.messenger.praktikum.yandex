@@ -12,7 +12,7 @@ describe("Button component", () => {
     });
     const { element } = button;
 
-    expect(element.textContent).to.eq(`${label}\n`);
+    expect(element.textContent).to.eq(`${label}`);
   });
 
   it("должен вызываться коллбыэк при клике", () => {

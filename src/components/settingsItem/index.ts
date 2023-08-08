@@ -1,5 +1,5 @@
 import { Block } from "../../services";
-import template from "./settingsItem.hbs";
+import { template } from "./settingsItem.tmpl";
 
 interface SettingsItemProps {
   label: string;

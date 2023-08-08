@@ -3,7 +3,7 @@ import { Routes } from "../../constants";
 import { Block, Router } from "../../services";
 import { BaseBlockProps } from "../../services/types";
 import { Form } from "./components";
-import template from "./registration.hbs";
+import { template } from "./registration.tmpl";
 
 class Registration extends Block {
   constructor() {

@@ -1,7 +1,7 @@
 import { Block } from "../../../../../../../../../../services";
 import { Form } from "./components";
 import { PopupProps } from "./types";
-import template from "./popupSaveAvatar.hbs";
+import { template } from "./popupSaveAvatar.tmpl";
 
 class PopupSaveAvatar extends Block<PopupProps> {
   constructor(props: PopupProps) {
